@@ -58,7 +58,7 @@ namespace Serial_Altitude_Simulator
             {
                 b = (c + b) % 256;
             }
-            return b.ToString("X2");
+            return (b).ToString("X2");
         }
 
         private string formatAltitude(decimal altitudeValue, ProtocolType protocol)
@@ -67,31 +67,31 @@ namespace Serial_Altitude_Simulator
 
             switch (protocol)
             {
-                case ProtocolType.TRIMBLE_GARMIN: // Trimble/Garmin
+                case ProtocolType.TRIMBLE_GARMIN: // ICARUS_Trimble/Garmin
                     // Sample: "ALT 00800\r" 
-                    return "ALT " + altitudeValue.ToString("00000") + "\r";
+                    return "ALT " + ((altitudeValue < 0) ? altitudeValue.ToString("0000") : altitudeValue.ToString("00000")) + "\r";
 
-                case ProtocolType.UPS_GARMIN: // UPS/Garmin AT/IIMorrow
-                    // Sample: "#AL +00800T+25D8\r"
-                    alt = "#AL +" + altitudeValue.ToString("00000") + "T+25";
+                case ProtocolType.UPS_GARMIN: // UPSAT/Garmin AT/IIMorrow/Dynon Encoder
+                    // Sample: "#AL +05200T+25D7\r"
+                    alt = "#AL " + ((altitudeValue >= 0) ? "+" : "") + altitudeValue.ToString("00000") + "T+25";
                     return alt + calcChecksum(alt) + "\r";
 
                 case ProtocolType.NORTHSTAR: // Northstar
                     // Sample: "ALT 02500\r"
-                    return "ALT " + altitudeValue.ToString("00000") + "\r";
+                    return "ALT " + ((altitudeValue < 0) ? altitudeValue.ToString("0000") : altitudeValue.ToString("00000")) + "\r";
 
-                case ProtocolType.UPS_AT_618_LORAN: // UPS AT 618 Loran
-                    alt = "#AL +" + altitudeValue.ToString("00000") + "T+25";
+                case ProtocolType.UPS_AT_618_LORAN: // UPS AT 618 Loran 
+                    alt = "#AL " + ((altitudeValue >= 0) ? "+" : "") + altitudeValue.ToString("00000") + "T+25"; 
                     return alt + calcChecksum(alt) + "\r";
 
                 case ProtocolType.MAGELLAN: // Magellan
                     // Sample: "$MGL+02500T+25D6\r"
-                    alt = "$MGL+" + altitudeValue.ToString("00000") + "T+25";
+                    alt = "$MGL" + ((altitudeValue >= 0) ? "+" : "") + altitudeValue.ToString("00000") + "T+25";
                     return alt + calcChecksum(alt) + "\r";
 
-                case ProtocolType.SHADIN: // Shadin
+                case ProtocolType.SHADIN: // Shadin RMS
                     // Sample: "RMS +02500T+251B\r"
-                    alt = "RMS +" + altitudeValue.ToString("00000") + "T+25";
+                    alt = "RMS " + ((altitudeValue >= 0) ? "+" : "") + altitudeValue.ToString("00000") + "T+25";
                     return alt + calcChecksum(alt) + "\r";
             }
             return alt;
