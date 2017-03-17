@@ -15,25 +15,78 @@ namespace Serial_Altitude_Simulator
         public SerialAltSimForm()
         {
             InitializeComponent();
-            InitializeProtocol();
+            initializeProtocol();
 
             scanForPorts();
         }
 
-        private void InitializeProtocol()
+        private void initializeProtocol()
         {
             this.currentAltitudeValue = 0;
-            this.altitudeProtocols.Add(ProtocolType.TRIMBLE_GARMIN, new AltitudeProtocol {stopBits = StopBits.One, parity = Parity.None, baudRate = 9600, dataBits = 8, checksum = false });
-            this.altitudeProtocols.Add(ProtocolType.UPS_GARMIN, new AltitudeProtocol { stopBits = StopBits.One, parity = Parity.None, baudRate = 1200, dataBits = 8, checksum = true });
-            this.altitudeProtocols.Add(ProtocolType.NORTHSTAR, new AltitudeProtocol { stopBits = StopBits.One, parity = Parity.Odd, baudRate = 9600, dataBits = 8, checksum = false });
-            this.altitudeProtocols.Add(ProtocolType.UPS_AT_618_LORAN, new AltitudeProtocol { stopBits = StopBits.One, parity = Parity.Odd, baudRate = 1200, dataBits = 7, checksum = true });
-            this.altitudeProtocols.Add(ProtocolType.MAGELLAN, new AltitudeProtocol { stopBits = StopBits.One, parity = Parity.Even, baudRate = 1200, dataBits = 7, checksum = true });
-            this.altitudeProtocols.Add(ProtocolType.SHADIN, new AltitudeProtocol { stopBits = StopBits.One, parity = Parity.None, baudRate = 9600, dataBits = 8, checksum = true });
-            //this.altitudeProtocols.Add(ProtocolType.ARNAV, new AltitudeProtocol { stopBits = StopBits.One, parity = Parity.Odd, baudRate = 9600, dataBits = 8 });
+
+            this.altitudeProtocols.Add(ProtocolType.ICARUS_GARMIN_TRIMBLE, new AltitudeProtocol {
+                name = "ICARUS Format: Trimble / Garmin",
+                stopBits = StopBits.One,
+                parity = Parity.None,
+                baudRate = 9600,
+                dataBits = 8,
+                checksum = false });
+            this.altitudeProtocols.Add(ProtocolType.UPSAT_GARMIN, new AltitudeProtocol {
+                name = "UPSAT Apollo / Garmin AT / IIMorrow",
+                stopBits = StopBits.One,
+                parity = Parity.None,
+                baudRate = 1200,
+                dataBits = 8,
+                checksum = true });
+            this.altitudeProtocols.Add(ProtocolType.NORTHSTAR, new AltitudeProtocol {
+                name = "Northstar / Garmin",
+                stopBits = StopBits.One,
+                parity = Parity.Odd,
+                baudRate = 9600,
+                dataBits = 8,
+                checksum = false });
+            this.altitudeProtocols.Add(ProtocolType.UPS_AT_618_LORAN, new AltitudeProtocol {
+                name = "UPS AT 618 Loran Devices (IIMorrow)",
+                stopBits = StopBits.One,
+                parity = Parity.Odd,
+                baudRate = 1200,
+                dataBits = 7,
+                checksum = true });
+            this.altitudeProtocols.Add(ProtocolType.MAGELLAN, new AltitudeProtocol {
+                name = "Magellan",
+                stopBits = StopBits.One,
+                parity = Parity.Even,
+                baudRate = 1200,
+                dataBits = 7,
+                checksum = true });
+
+            /* 
+             * TODO: Add support for these protocols
+             *  this.altitudeProtocols.Add(ProtocolType.SHADIN_RMS, new AltitudeProtocol {
+             *      name = "SHADIN RMS Format",
+             *      stopBits = StopBits.One,
+             *      parity = Parity.None,
+             *      baudRate = 9600,
+             *      dataBits = 8,
+             *      checksum = true });
+             *      
+             *  this.altitudeProtocols.Add(ProtocolType.ARNAV, new AltitudeProtocol { 
+             *      stopBits = StopBits.One, 
+             *      parity = Parity.Odd, 
+             *      baudRate = 9600, 
+             *      dataBits = 8 });
+            */
+            
+
+            foreach(AltitudeProtocol a in altitudeProtocols.Values)
+            {
+                protocolComboBox.Items.Add(a.name);
+            }
         }
 
         private void scanForPorts()
         {
+            openButton.Enabled = false;
             comPortsComboBox.Items.Clear();
             comPortsComboBox.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
 
@@ -67,11 +120,11 @@ namespace Serial_Altitude_Simulator
 
             switch (protocol)
             {
-                case ProtocolType.TRIMBLE_GARMIN: // ICARUS_Trimble/Garmin
+                case ProtocolType.ICARUS_GARMIN_TRIMBLE: // ICARUS_Trimble/Garmin
                     // Sample: "ALT 00800\r" 
                     return "ALT " + ((altitudeValue < 0) ? altitudeValue.ToString("0000") : altitudeValue.ToString("00000")) + "\r";
 
-                case ProtocolType.UPS_GARMIN: // UPSAT/Garmin AT/IIMorrow/Dynon Encoder
+                case ProtocolType.UPSAT_GARMIN: // UPSAT/Garmin AT/IIMorrow/Dynon Encoder
                     // Sample: "#AL +05200T+25D7\r"
                     alt = "#AL " + ((altitudeValue >= 0) ? "+" : "") + altitudeValue.ToString("00000") + "T+25";
                     return alt + calcChecksum(alt) + "\r";
@@ -89,13 +142,15 @@ namespace Serial_Altitude_Simulator
                     alt = "$MGL" + ((altitudeValue >= 0) ? "+" : "") + altitudeValue.ToString("00000") + "T+25";
                     return alt + calcChecksum(alt) + "\r";
 
-                case ProtocolType.SHADIN: // Shadin RMS
+                case ProtocolType.SHADIN_RMS: // SHADIN_RMS RMS
                     // Sample: "RMS +02500T+251B\r"
                     alt = "RMS " + ((altitudeValue >= 0) ? "+" : "") + altitudeValue.ToString("00000") + "T+25";
                     return alt + calcChecksum(alt) + "\r";
             }
             return alt;
         }
+
+
 
         private void transmitTimer_Tick(object sender, EventArgs e)
         {
@@ -135,8 +190,6 @@ namespace Serial_Altitude_Simulator
             }
             
         }
-
-
 
         private void closeButton_Click(object sender, EventArgs e)
         {
@@ -199,14 +252,11 @@ namespace Serial_Altitude_Simulator
             }
         }
 
-
         private void serialPort_ErrorReceived(object sender, System.IO.Ports.SerialErrorReceivedEventArgs e)
         {
             resetComPort();
             transmitTimer.Stop();
         }
-
-
 
         private void comPortsComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -214,36 +264,38 @@ namespace Serial_Altitude_Simulator
                 openButton.Enabled = true;
         }
 
-
-        private struct AltitudeProtocol
-        {
-            public StopBits stopBits;
-            public Parity parity;
-            public int baudRate;
-            public int dataBits;
-            public bool checksum;
-        }
-
-        public enum ProtocolType
-        {
-            TRIMBLE_GARMIN,
-            UPS_GARMIN,
-            NORTHSTAR,
-            UPS_AT_618_LORAN,
-            MAGELLAN,
-            SHADIN,
-            ARNAV
-        };
-
-        private Dictionary<ProtocolType, AltitudeProtocol> altitudeProtocols = new Dictionary<ProtocolType, AltitudeProtocol>();
-        private AltitudeProtocol selectedProtocol;
-        private decimal currentAltitudeValue;
-
         private void altitudeSelector_ValueChanged(object sender, EventArgs e)
         {
             this.currentAltitudeValue = altitudeSelector.Value;
         }
 
 
+
+        private struct AltitudeProtocol
+        {
+            public string name;
+            public StopBits stopBits;
+            public Parity parity;
+            public int baudRate;
+            public int dataBits;
+            public bool checksum;
+        }
+        
+        private Dictionary<ProtocolType, AltitudeProtocol> altitudeProtocols = new Dictionary<ProtocolType, AltitudeProtocol>();
+        private AltitudeProtocol selectedProtocol;
+        private decimal currentAltitudeValue;
+
     }
+
+    public enum ProtocolType
+    {
+        ICARUS_GARMIN_TRIMBLE,
+        UPSAT_GARMIN,
+        NORTHSTAR,
+        UPS_AT_618_LORAN,
+        MAGELLAN,
+        SHADIN_RMS,
+        ARNAV,
+        Microair_UAV
+    };
 }

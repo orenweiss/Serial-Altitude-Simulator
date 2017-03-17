@@ -39,8 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comPortsComboBox = new System.Windows.Forms.ComboBox();
             this.protocolComboBox = new System.Windows.Forms.ComboBox();
-            this.closeButton = new System.Windows.Forms.Button();
             this.altitudeSelector = new Serial_Altitude_Simulator.FormattedNumericUpDown();
+            this.closeButton = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.altitudeSelector)).BeginInit();
             this.SuspendLayout();
@@ -128,34 +128,13 @@
             // 
             this.protocolComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.protocolComboBox.DisplayMember = "altitude";
             this.protocolComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.protocolComboBox.FormattingEnabled = true;
-            this.protocolComboBox.Items.AddRange(new object[] {
-            "Trimble/Garmin Nav Devices",
-            "UPS Aviation/Garmin AT/IIMorrow Nav Devices",
-            "Northstar Nav Devices",
-            "UPS AT 618 Loran Devices",
-            "Magellan Nav Devices",
-            "Shadin One-Foot Resolution"});
             this.protocolComboBox.Location = new System.Drawing.Point(107, 142);
             this.protocolComboBox.Name = "protocolComboBox";
             this.protocolComboBox.Size = new System.Drawing.Size(287, 21);
             this.protocolComboBox.TabIndex = 1;
             this.protocolComboBox.TabStop = false;
-            // 
-            // closeButton
-            // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.Enabled = false;
-            this.closeButton.Location = new System.Drawing.Point(281, 216);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(75, 23);
-            this.closeButton.TabIndex = 4;
-            this.closeButton.TabStop = false;
-            this.closeButton.Text = "Close Port";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // altitudeSelector
             // 
@@ -188,6 +167,19 @@
             this.altitudeSelector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.altitudeSelector.ValueChanged += new System.EventHandler(this.altitudeSelector_ValueChanged);
             this.altitudeSelector.MouseUp += new System.Windows.Forms.MouseEventHandler(this.altitudeSelector_MouseUp);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.Enabled = false;
+            this.closeButton.Location = new System.Drawing.Point(281, 216);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 4;
+            this.closeButton.TabStop = false;
+            this.closeButton.Text = "Close Port";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // SerialAltSimForm
             // 
