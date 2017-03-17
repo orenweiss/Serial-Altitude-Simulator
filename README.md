@@ -1,18 +1,42 @@
 # Serial Altitude Simulator
-Serial RS-232 Altitude Encoder Simulator for Mode-S Transponders
+---
 
-##### Supported Altitude Protocols 
+*Serial Altitude Simulator* is a light-weight Windows GUI application that can emulate a number of 
+different serial RS-232 altitude encoders for supported transponders. Features an intuitive graphical user
+interface, automatic serial-port enumeration, and support for many formats and growing.
 
-
-#### Requirements
-- Microsoft .NET 3.5 or above
-- RS-232 serial port or USB to RS-232 Serial adapter cable
-
-#### Download
- - Download the latest release setup or binary
+> **Note:**
+> This is pre-release software and should be used as such. *Here be dragons.*
 
 
-#### Disclaimers
+#### Supported altitude formats:
+- ICARUS Format: Trimble / Garmin
+- UPSAT Apollo / Garmin AT / IIMorrow
+- Northstar / Garmin
+- UPS AT 618 Loran Devices (IIMorrow)
+- Magellan Nav Devices Protocol
+
+
+## Installation
+
+### Requirements
+- Windows 7 or greater
+- [Microsoft .NET Framework 3.5 SP1](https://www.microsoft.com/en-us/download/details.aspx?id=25150) or greater
+- Hardware RS232 serial-port or USB-to-RS232 serial adapter cable
+- Supported GA or commercial transponder
+
+
+### Download
+- Download the setup file or portable executable from the [Releases](https://github.com/estl/Serial-Altitude-Simulator/Releases) page.
+- Instal or execute the application.
+
+
+## Contributing
+
+If you think you have found a bug or have a feature request, please [report an issue](https://github.com/estl/Serial-Altitude-Simulator/issues?state=open), or if appropriate: submit a pull request.
+
+
+## Disclaimers
 
 	No Warranty: THE SUBJECT SOFTWARE IS PROVIDED "AS IS" WITHOUT ANY WARRANTY OF ANY KIND,
 	EITHER EXPRESSED, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, ANY WARRANTY
@@ -35,3 +59,4 @@ Serial RS-232 Altitude Encoder Simulator for Mode-S Transponders
 	CONTRACTORS AND SUBCONTRACTORS, AS WELL AS ANY PRIOR RECIPIENT, TO THE EXTENT
 	PERMITTED BY LAW. RECIPIENT'S SOLE REMEDY FOR ANY SUCH MATTER SHALL BE THE IMMEDIATE,
 	UNILATERAL TERMINATION OF THIS AGREEMENT.
+
