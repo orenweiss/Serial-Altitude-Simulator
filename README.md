@@ -1,12 +1,12 @@
 # Serial Altitude Simulator
----
 
-*Serial Altitude Simulator* is a light-weight Windows GUI application that can emulate a number of 
-different serial RS-232 altitude encoders for supported transponders. Features an intuitive graphical user
-interface, automatic serial-port enumeration, and support for many formats and growing.
+
+*Serial Altitude Simulator* is a light-weight Windows GUI application that can emulate the output of  
+various serial RS-232 altitude encoders. Features an intuitive graphical user
+interface, automatic serial-port enumeration, and support for many formats.
 
 > **Note:**
-> This is pre-release software and should be used as such. *Here be dragons.*
+> This is pre-release software. To avoid data loss, do not install this software on mission-critical computers.
 
 
 #### Supported altitude formats:
@@ -20,16 +20,13 @@ interface, automatic serial-port enumeration, and support for many formats and g
 ## Installation
 
 ### Requirements
-- Windows 7 or greater
+- Windows 7 or newer
 - [Microsoft .NET Framework 3.5 SP1](https://www.microsoft.com/en-us/download/details.aspx?id=25150) or greater
-- Hardware RS232 serial-port or USB-to-RS232 serial adapter cable
-- Supported GA or commercial transponder
-
+- Compatible RS232 serial-port or USB-to-RS232 serial adapter cable
 
 ### Download
-- Download the setup file or portable executable from the [Releases](https://github.com/estl/Serial-Altitude-Simulator/Releases) page.
-- Instal or execute the application.
-
+- Download the setup file or portable executable from the [Releases](https://github.com/estl/Serial-Altitude-Simulator/Releases) page
+- Execute installer or stand-alone application
 
 ## Contributing
 
@@ -50,7 +47,7 @@ If you think you have found a bug or have a feature request, please [report an i
 	GOVERNMENT AGENCY DISCLAIMS ALL WARRANTIES AND LIABILITIES REGARDING THIRD-PARTY
 	SOFTWARE, IF PRESENT IN THE ORIGINAL SOFTWARE, AND DISTRIBUTES IT "AS IS."
 
-	Waiver and Indemnity:  RECIPIENT AGREES TO WAIVE ANY AND ALL CLAIMS AGAINST THE UNITED
+	Waiver and Indemnity: RECIPIENT AGREES TO WAIVE ANY AND ALL CLAIMS AGAINST THE UNITED
 	STATES GOVERNMENT, ITS CONTRACTORS AND SUBCONTRACTORS, AS WELL AS ANY PRIOR
 	RECIPIENT. IF RECIPIENT'S USE OF THE SUBJECT SOFTWARE RESULTS IN ANY LIABILITIES,
 	DEMANDS, DAMAGES, EXPENSES OR LOSSES ARISING FROM SUCH USE, INCLUDING ANY DAMAGES
@@ -59,4 +56,3 @@ If you think you have found a bug or have a feature request, please [report an i
 	CONTRACTORS AND SUBCONTRACTORS, AS WELL AS ANY PRIOR RECIPIENT, TO THE EXTENT
 	PERMITTED BY LAW. RECIPIENT'S SOLE REMEDY FOR ANY SUCH MATTER SHALL BE THE IMMEDIATE,
 	UNILATERAL TERMINATION OF THIS AGREEMENT.
-

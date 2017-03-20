@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{93E4F782-65D3-499C-9AE3-3FF62310EE53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,13 @@ Global
 		{6F0296FE-0DC0-4F5D-BDA3-357CE98D467C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6F0296FE-0DC0-4F5D-BDA3-357CE98D467C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6F0296FE-0DC0-4F5D-BDA3-357CE98D467C}.Release|Win32.ActiveCfg = Release|Any CPU
+		{93E4F782-65D3-499C-9AE3-3FF62310EE53}.Debug|Any CPU.ActiveCfg = Debug
+		{93E4F782-65D3-499C-9AE3-3FF62310EE53}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{93E4F782-65D3-499C-9AE3-3FF62310EE53}.Debug|Win32.ActiveCfg = Debug
+		{93E4F782-65D3-499C-9AE3-3FF62310EE53}.Release|Any CPU.ActiveCfg = Release
+		{93E4F782-65D3-499C-9AE3-3FF62310EE53}.Release|Any CPU.Build.0 = Release
+		{93E4F782-65D3-499C-9AE3-3FF62310EE53}.Release|Mixed Platforms.ActiveCfg = Release
+		{93E4F782-65D3-499C-9AE3-3FF62310EE53}.Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
