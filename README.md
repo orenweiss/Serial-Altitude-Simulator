@@ -25,7 +25,7 @@ interface, automatic serial-port enumeration, and support for many formats.
 - Compatible RS232 serial-port or USB-to-RS232 serial adapter cable
 
 ### Download
-- Download the setup file or portable executable from the [Releases](https://github.com/estl/Serial-Altitude-Simulator/Releases) page
+- Download the setup file or portable executable from the [Releases](https://github.com/estl/Serial-Altitude-Simulator/releases) page
 - Execute installer or stand-alone application
 
 ## Contributing
