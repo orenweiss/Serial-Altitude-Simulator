@@ -55,13 +55,21 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Serial-Altitude-Simulator_Setup_v1.0.2_x86.msi"
+        "OutputFilename" = "8:Release\\Serial-Altitude-Simulator_Setup_v.0.1.2_x86.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -224,7 +232,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Serial Altitude Simulator"
         "ProductCode" = "8:{08F9990E-852C-493D-B339-C00F2C931DCD}"
-        "PackageCode" = "8:{AF0EDA3F-9D35-4E6F-9B1A-531715CCC570}"
+        "PackageCode" = "8:{6F04424A-55CF-4A2B-B463-CA1CA5220099}"
         "UpgradeCode" = "8:{1596E18D-E3A0-494D-B635-DF1541F773A7}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
